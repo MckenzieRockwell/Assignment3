@@ -1,10 +1,43 @@
+
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
 }
+
+html{
+  position:relative; 
+  min-height: 100%;
+}
+
+
+.contactme {
+	float: right;
+}
+
+.formrow{
+	margin-top: 2.5%;
+	margin-bottom: 2.5%;
+}
+
+#sendbutton{
+	width: 50%;
+	background-color:#67ea4d ;
+}
+
+#contactPara{
+	font-size: 18px; 
+}
+
+
+
+
+
+
+
+
 
 
