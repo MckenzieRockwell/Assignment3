@@ -1,0 +1,23 @@
+html{
+  position:relative; 
+  min-height: 100%;
+}
+
+
+.contactme {
+	float: right;
+}
+
+.formrow{
+	margin-top: 2.5%;
+	margin-bottom: 2.5%;
+}
+
+#sendbutton{
+	width: 50%;
+	background-color:#67ea4d ;
+}
+
+#contactPara{
+	font-size: 18px; 
+}
