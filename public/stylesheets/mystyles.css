@@ -1,3 +1,8 @@
+/**
+These are the css rules I have added. These rules along
+with the styling provided by bootstrap, and the basic default
+sheet the comes with express provide all styling **/
+
 html{
   position:relative; 
   min-height: 100%;
