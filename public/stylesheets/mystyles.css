@@ -38,7 +38,7 @@ ul.nav-tabs {
 }
 
 
-@media (max-width: 700px){
+@media handheld {
 	.nav-tabs li a {
 		height: 50px;
 		font-size: 0.6em; 
