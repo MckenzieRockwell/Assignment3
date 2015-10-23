@@ -31,11 +31,17 @@ html{
 	background-color: #f37344; 
 }
 
+ul.nav-tabs {
+	padding-left: 2.5%;
+	padding-right: 2.5%; 
+
+}
+
 
 @media (max-width: 700px){
-	.nav-tabs li {
-		width: 25%;
-		height: 5%;
-		padding:2.5%;	
+	.nav-tabs li a {
+		width: 85px;
+		height: 75px;
 	}
+
 }
