@@ -31,11 +31,11 @@ html{
 	background-color: #f37344; 
 }
 
-
-@media (min-width: 700px){
+/*
+@media (max-width: 700px){
 	.nav-tabs li {
-		width: 20%;
+		width: 25%;
 		height: 5%;
 		padding:2.5%;	
 	}
-}
+}*/

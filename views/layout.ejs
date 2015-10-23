@@ -4,7 +4,33 @@
  		<% include partials/head %>
   </head>
   <body>
-  		<% include partials/header %>
+  	<ul class="nav nav-tabs navbar-fixed-top">
+
+		<li <% if (page === 'home') { %>class='active'<% } %>><a href="/">Home</a></li>
+
+
+		<li <% if (page === 'about') { %>class='active'<% } %>><a href="/about">About me</a></li>
+
+
+		<li <% if (page === 'services') { %>class='active'<% } %>><a href="/services">Services</a></li>
+
+
+		<li <% if (page === 'projects') { %>class='active'<% } %>><a href="/projects">Projects</a></li>
+
+
+		<li <% if (page === 'contact') { %>class='active'<% } %>><a href="/contact">Contacts me</a></li>
+
+	</ul>
+
+	<div class="page-header">
+			<h3 style="text-align:center"> Mckenzie Rockwell's web portfolio</h3>
+			<h3 class="centered"><%=title %></h3>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+	</script>
+	<script src="/bootstrap/js/bootstrap.min.js">
+	</script>
 
   		<%- body %>
 
