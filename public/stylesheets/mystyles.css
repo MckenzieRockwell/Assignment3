@@ -34,6 +34,7 @@ html{
 
 @media (min-width: 700px){
 	.nav-tabs li {
-		width: 30%;	
+		width: 20%;
+		padding:2.5%;	
 	}
 }
