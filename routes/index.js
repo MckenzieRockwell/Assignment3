@@ -9,23 +9,23 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next){
-  res.render('home', {page: "home"});
+  res.render('home', {page: "home", title: "Home"});
 });
 
 router.get('/about', function(req, res, next){
-	res.render('about', {page: "about"});
+	res.render('about', {page: "about", title: "About me"});
 });
 
 router.get('/services', function(req, res, next){
-	res.render('services', {page: "services"});
+	res.render('services', {page: "services", title: "Services"});
 }); 
 
 router.get('/projects', function(req, res, next){
-	res.render('projects', {page: "projects"}); 
+	res.render('projects', {page: "projects", title: "Projects"}); 
 }); 
 
 router.get('/contact', function(req, res, next){
-	res.render('contactMe', {page: "contact"})
+	res.render('contactMe', {page: "contact", title: "Contact me"})
 });
 
 module.exports = router;
