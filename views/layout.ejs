@@ -41,11 +41,11 @@
 
   	if (matchMedia)
   	{
-  		var mq = window.matchMedia("(max-width: 500px)"); 
+  		var mq = window.matchMedia("(max-width: 575px)"); 
   		mq.addListener(isAsShorter);
   		isAsShorter(mq);
 
-  		var mq1 = window.matchMedia("(min-width: 501px");
+  		var mq1 = window.matchMedia("(min-width: 576px");
   		mq1.addListener(isWider);
   		isWider(mq1);
   	}
@@ -53,7 +53,6 @@
   	function isAsShorter(mq){
   		console.log(mq);
   		if(mq.matches){
-  			console.log('the viewport is now 500 or les');
   			console.log(mq); 
 
   			navbar.removeClass("nav-tabs");
@@ -66,7 +65,7 @@
   	function isWider(mq1){
 
   		if(mq1.matches){
-  			console.log('the viewport is now over 500 px in width');
+  			
   			console.log(mq1); 
 
   			navbar.removeClass("nav-pills"); 
