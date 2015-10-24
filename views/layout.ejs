@@ -4,7 +4,7 @@
  		<% include partials/head %>
   </head>
   <body>
-  	<ul class="nav nav-tabs navbar-fixed-top">
+  	<ul id="navbar" class="nav nav-tabs navbar-fixed-top">
 
 		<li <% if (page === 'home') { %>class='active'<% } %>><a href="/">Home</a></li>
 
@@ -33,6 +33,51 @@
 	</script>
 
   		<%- body %>
+
+  	<script>
+
+
+  	var navbar = $('#navbar');
+
+  	if (matchMedia)
+  	{
+  		var mq = window.matchMedia("(max-width: 500px)"); 
+  		mq.addListener(isAsShorter);
+  		isAsShorter(mq);
+
+  		var mq1 = window.matchMedia("(min-width: 501px");
+  		mq1.addListener(isWider);
+  		isWider(mq1);
+  	}
+
+  	function isAsShorter(mq){
+  		console.log(mq);
+  		if(mq.matches){
+  			console.log('the viewport is now 500 or les');
+  			console.log(mq); 
+
+  			navbar.removeClass("nav-tabs");
+
+  			navbar.addClass("nav-pills"); 
+
+  		}
+  	}
+
+  	function isWider(mq1){
+
+  		if(mq1.matches){
+  			console.log('the viewport is now over 500 px in width');
+  			console.log(mq1); 
+
+  			navbar.removeClass("nav-pills"); 
+
+  			navbar.addClass("nav-tabs"); 
+
+  		}
+  	}
+
+
+  	</script>
 
   </body>
 </html>

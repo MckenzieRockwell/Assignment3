@@ -27,25 +27,24 @@ html{
 	font-size: 18px; 
 }
 
-.nav-tabs {
+#navbar {
 	background-color: #f37344; 
-}
-
-ul.nav-tabs {
 	padding-left: 2.5%;
 	padding-right: 2.5%; 
+}
 
+#navbar a:active  {
+	background-color: #f2f2fd;
 }
 
 
-@media handheld {
-	.nav-tabs li a {
-		height: 50px;
-		font-size: 0.6em; 
+
+@media handheld, (max-width: 700px) {
+
+	h3, p, label  {
+		font-size: 0.75em;
 	}
 
-	.nav-tabs li {
-		width: 19%;
-	}
+
 
 }
