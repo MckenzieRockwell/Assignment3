@@ -1,0 +1,53 @@
+<div class='row'>
+<form class='form-horizontal' method='post' action='/contacts/contactform'>
+	<% if(typeof editmode !== 'undefined'){ %>
+		<input type='hidden' name='thisId' value='<%= thiscontact._id %>'>
+	<% }else{ var editmode=false; } %>
+	<div class='form-group'>
+		<label class='col-sm-4 control-label' for='contactname'>Contact name</label>
+		<div class='col-sm-4'>
+			<input type='text' class='form-control' id='contactname' name='name' 
+			<% if(editmode){ %> 
+				value=<%= thiscontact.name %>
+			<% }%>
+			>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-4 control-label' for='contactnum'>Contact number</label>
+		<div class='col-sm-4'>
+			<input type='text' class='form-control' id='contactnum' name='number'
+			<% if(editmode){ %> 
+				value=<%= thiscontact.number %>
+			<% }%>
+			>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-4 control-label' for='contactemail'>Contact email address</label>
+		<div class='col-sm-4'>
+			<input type='text' class='form-control' id='contactemail' name='mail'
+			<% if(editmode){ %> 
+				value=<%= thiscontact.emailaddress %>
+			<% } %>
+			>
+		</div>
+	</div>
+	<div class='form-group'>
+		<div class='col-sm-2 col-sm-offset-4'>
+		<button type='submit' class='btn btn-default'>
+		<% if(editmode){ %>
+		Edit
+		<% }else{ %>
+		Add
+		<% } %>
+		</div>
+		<% if(editmode){ %>
+		<div class='col-sm-2'>
+
+			<a class='btn btn-default' href='/contacts/edit/<%= thiscontact._id %>'>Revert</a>
+		</div>	
+		<% } %>
+	</div>
+</form>
+</div> 

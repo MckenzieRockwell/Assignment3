@@ -25,13 +25,51 @@ router.get('/contactlist', function(req, res, next){
 	});
 });
 
-router.get('/addcontact', function(req, res, next){
-	res.render('addcontact', {page: 'addcontact', title: 'Add Contact'}); 
+router.get('/contactform', function(req, res, next){
+	res.render('contactform', {page: 'contactform', title: 'Add Contact'}); 
 });
 
+router.get('/edit/:id', function(req, res, next){
+	var id = req.params.id;
+	bisContact.findById(id, function(err, thiscontact){
+		if(err){
+			console.log(err);
+			res.end(err);
+		}else{
+			res.render('contactform',{
+				page: 'contactform',
+				title: '',
+				editmode: true,
+				thiscontact: thiscontact
+			});
+		}
+	});
+}); 
 
-router.post('/addcontact', function(req, res, next){
-	bisContact.create({
+
+router.post('/contactform', function(req, res, next){
+	var thisId = req.body.thisId;
+
+	if(typeof thisId !== 'undefined'){
+		console.log(thisId);
+ 		var thisBisContact = new bisContact({
+ 			name: req.body.name,
+ 			number: req.body.number,
+ 			emailaddress: req.body.mail,
+ 			_id: thisId
+ 		}); 
+
+ 		bisContact.update({_id: thisId}, thisBisContact, function(err){
+ 			if(err){
+ 				console.log(err); 
+ 				res.end(err);
+ 			}else{
+ 				res.redirect('/contacts/contactlist');
+ 			}
+ 		}); 
+	}else{
+		console.log('its null');
+		bisContact.create({
 		name: req.body.name,
 		number: req.body.number,
 		emailaddress: req.body.mail
@@ -41,12 +79,28 @@ router.post('/addcontact', function(req, res, next){
 				res.end(err);
 			}
 			else{
-		res.render('addcontact', {page: 'addcontact', title: 'Add Contact'}); 
+				res.redirect('/contacts/contactlist');
 			}
 
-	}); 
+		});
+	}
+
+
 
 });
+
+router.get('/delete/:id', function(req, res, next){
+	var id = req.params.id; 
+	bisContact.remove({_id: id}, function(err){
+		if(err){
+			console.log(err);
+			res.end(err);
+		}else{
+			res.redirect('/contacts/contactlist'); 
+		}
+
+	}); 
+}); 
 
 // router.get
 // 	('/editcontact', {page: 'edit contact', title: 'Edit Contact'}){
