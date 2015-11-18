@@ -1,16 +1,34 @@
 var express = require('express');
+var passport = require('passport');
 var router = express.Router();
 var mongoose = require('mongoose');
+
+var User = require('../models/user');
 
 var bisContact = require('../models/bisContact'); 
 
 
+function requireAuth(req, res, next){
+
+  if(!req.isAuthenticated()){
+    return res.redirect('/login');
+  }
+  next();
+}
+
 
 router.get('/login', function(req, res, next){
 	res.render('loginform', {page: 'login', title: 'User login'});
-})
+});
 
-router.get('/contactlist', function(req, res, next){
+
+router.post('/login', passport.authenticate('local-login', {
+    successRedirect: '/contacts/contactlist',
+    failureRedirect: '/contacts/login'
+}));
+
+
+router.get('/contactlist',requireAuth, function(req, res, next){
 	bisContact.find(function(err, contacts){
 		if(err){
 			console.log(err);
@@ -25,11 +43,11 @@ router.get('/contactlist', function(req, res, next){
 	});
 });
 
-router.get('/contactform', function(req, res, next){
+router.get('/contactform',requireAuth, function(req, res, next){
 	res.render('contactform', {page: 'contactform', title: 'Add Contact'}); 
 });
 
-router.get('/edit/:id', function(req, res, next){
+router.get('/edit/:id',requireAuth, function(req, res, next){
 	var id = req.params.id;
 	bisContact.findById(id, function(err, thiscontact){
 		if(err){
@@ -47,7 +65,7 @@ router.get('/edit/:id', function(req, res, next){
 }); 
 
 
-router.post('/contactform', function(req, res, next){
+router.post('/contactform',requireAuth, function(req, res, next){
 	var thisId = req.body.thisId;
 
 	if(typeof thisId !== 'undefined'){
