@@ -28,7 +28,7 @@
 					</div>	
 				</div>
 				</li>
-			<% if (contacts) { %>
+			<% if (typeof contacts !== 'undefined') { %>
 				<% for(var i=0; i< contacts.length; i++) { %>
 				<% var thiscontact = contacts[i] %>
 				<li class='list-group-item'>

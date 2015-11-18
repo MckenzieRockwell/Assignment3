@@ -34,11 +34,19 @@ router.get('/contactlist',requireAuth, function(req, res, next){
 			console.log(err);
 			res.end(err);
 		}else{
-			res.render('contactlist',{
-			 page: 'contactlist',
-			 title: 'List of Business Contacts',
-			 contacts: contacts
-			}); 
+				if(typeof contacts !== 'undefined')
+				{
+					res.render('contactlist',{
+					page: 'contactlist',
+					title: 'List of Business Contacts',
+					contacts: contacts
+					});
+				}else{
+					res.render('contactlist',{
+					page: 'contactlist',
+					title:'List of Business Contacts'
+					}); 
+				}
 		}
 	});
 });
@@ -119,12 +127,6 @@ router.get('/delete/:id', function(req, res, next){
 
 	}); 
 }); 
-
-// router.get
-// 	('/editcontact', {page: 'edit contact', title: 'Edit Contact'}){
-// 	res.render()
-// });  
-
 
 
 module.exports = router;
