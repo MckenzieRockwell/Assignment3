@@ -1,0 +1,30 @@
+  <nav class='navbar navbar-default navbar-fixed-top' id='navbarnav'>
+    <div class='container-fluid'>
+      <div class='navbar-header navregions'>
+        <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#collapsearea' aria-expanded='false' aria-controls='collapsearea'>
+        <span class='glyphicon glyphicon-menu-hamburger'></span>
+      </button>
+      </div>
+      <div class='collapse navbar-collapse navregions' id='collapsearea'>
+      	<ul id="navlist" class="nav nav-tabs" >
+
+    		<li <% if (locals.page === 'home') { %>class='active'<% } %>><a href="/">Home</a></li>
+
+
+    		<li <% if (locals.page === 'about') { %>class='active'<% } %>><a href="/about">About me</a></li>
+
+
+    		<li <% if (locals.page === 'services') { %>class='active'<% } %>><a href="/services">Services</a></li>
+
+
+    		<li <% if (locals.page === 'projects') { %>class='active'<% } %>><a href="/projects">Projects</a></li>
+
+
+    		<li <% if (locals.page === 'contact') { %>class='active'<% } %>><a href="/contact">Contacts me</a></li>
+
+        <li <% if (locals.page === 'addcontacts') { %>class='active'<% } %>><a href='/addcontacts'>Add contacts</a></li>
+
+    	 </ul>
+      </div>
+    </div>
+  </nav>

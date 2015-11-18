@@ -1,36 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
- 		 
-  <meta name="McKenzie Rockwell" content="my online portfolio">
 
-  <meta name=”viewport” content=”width-device-width, initial-scale=1.0”>
-
-  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"/>
-
-  <link rel="stylesheet" href="/stylesheets/style.css"/>
-
-  <link rel="stylesheet" href="/stylesheets/mystyles.css"/>
-  
-  </head>
+  <%- include('partials/head') %>
   <body>
-  	<ul id="navbar" class="nav nav-tabs navbar-fixed-top">
+  <!--
+  nav bar
+  //-->
+  <%- include('partials/navbar') %>
+  <!--
 
-		<li <% if (locals.page === 'home') { %>class='active'<% } %>><a href="/">Home</a></li>
+  page body
 
-
-		<li <% if (locals.page === 'about') { %>class='active'<% } %>><a href="/about">About me</a></li>
-
-
-		<li <% if (locals.page === 'services') { %>class='active'<% } %>><a href="/services">Services</a></li>
-
-
-		<li <% if (locals.page === 'projects') { %>class='active'<% } %>><a href="/projects">Projects</a></li>
-
-
-		<li <% if (locals.page === 'contact') { %>class='active'<% } %>><a href="/contact">Contacts me</a></li>
-
-	</ul>
+  //-->
 
 	<div class="page-header">
 			<h3 style="text-align:center"> Mckenzie Rockwell's web portfolio</h3>
@@ -40,14 +21,15 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
 	</script>
 	<script src="/bootstrap/js/bootstrap.min.js">
-	</script>
-
+	 </script>
+    <div class='container'>
   		<%- body %>
-
+    </div>
   	<script>
 
 
-  	var navbar = $('#navbar');
+  
+  	var navbar = $('#navlist');
 
   	if (matchMedia)
   	{
@@ -60,14 +42,14 @@
   		isWider(mq1);
   	}
 
+  
+
   	function isAsShorter(mq){
   		console.log(mq);
   		if(mq.matches){
   			console.log(mq); 
 
-  			navbar.removeClass("nav-tabs");
-
-  			navbar.addClass("nav-pills"); 
+  			navbar.removeClass("nav-tabs"); 
 
   		}
   	}
@@ -76,14 +58,15 @@
 
   		if(mq1.matches){
   			
-  			console.log(mq1); 
-
-  			navbar.removeClass("nav-pills"); 
+  			console.log(mq1);
 
   			navbar.addClass("nav-tabs"); 
 
   		}
   	}
+  
+
+
 
 
   	</script>

@@ -27,14 +27,18 @@ html{
 	font-size: 18px; 
 }
 
-#navbar {
-	background-color: #f37344; 
-	padding-left: 2.5%;
-	padding-right: 2.5%; 
+
+
+.navregions {
+	background-color: #bad7de; 
 }
 
 #navbar a:active  {
 	background-color: #f2f2fd;
+}
+
+#navlist a {
+	color: #3f6c3d;
 }
 
 
