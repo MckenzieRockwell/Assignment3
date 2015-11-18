@@ -10,7 +10,7 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-//var contacts = require('./routes/contacts');
+var contacts = require('./routes/contacts');
 
 var app = express();
 var expressLayouts = require('express-ejs-layouts'); 
@@ -29,22 +29,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(session({
-//   secret: 'learn node',
-//   resave: true, 
-//   saveUninitialized: false
-// })); 
-
-// var Account= require('./models/account');
-
-
-//passportstuff
-app.use(passport.initialize());
-app.use(passport.session()); 
 
 app.use('/', routes);
 app.use('/users', users);
-//app.use('/contacts', contacts); 
+app.use('/contacts', contacts); 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
