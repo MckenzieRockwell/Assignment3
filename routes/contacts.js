@@ -6,9 +6,9 @@ var bisContact = require('../models/bisContact');
 
 
 
-// router.get('/contactlist', function(req, res, next){
-// 	res.render('contactlist', {page: 'contactlist', title: 'Contact List'}); 
-// });
+router.get('/login', function(req, res, next){
+	res.rend('loginform', {page: 'login', title: 'User login'});
+})
 
 router.get('/contactlist', function(req, res, next){
 	bisContact.find(function(err, contacts){
