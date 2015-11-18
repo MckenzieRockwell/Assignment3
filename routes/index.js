@@ -28,4 +28,9 @@ router.get('/contact', function(req, res, next){
 	res.render('contactMe', {page: "contact", title: "Contact me"})
 });
 
+router.get('/contacts/addcontact', function(req, res, next){
+	res.render('contact', {page: 'addcontact', title: 'Add Contact'}); 
+});
+
+
 module.exports = router;
