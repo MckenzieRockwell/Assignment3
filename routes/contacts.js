@@ -2,11 +2,27 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 
-var businessContact = require('../models/bisContact'); 
+var bisContact = require('../models/bisContact'); 
 
+
+
+// router.get('/contactlist', function(req, res, next){
+// 	res.render('contactlist', {page: 'contactlist', title: 'Contact List'}); 
+// });
 
 router.get('/contactlist', function(req, res, next){
-	res.render('contactlist', {page: 'contactlist', title: 'List of Business Contacts'});
+	bisContact.find(function(err, contacts){
+		if(err){
+			console.log(err);
+			res.end(err);
+		}else{
+			res.render('contactlist',{
+			 page: 'contactlist',
+			 title: 'List of Business Contacts',
+			 contacts: contacts
+			}); 
+		}
+	});
 });
 
 router.get('/addcontact', function(req, res, next){
@@ -15,17 +31,17 @@ router.get('/addcontact', function(req, res, next){
 
 
 router.post('/addcontact', function(req, res, next){
-	businessContact.create({
+	bisContact.create({
 		name: req.body.name,
 		number: req.body.number,
-		email: req.body.mail
+		emailaddress: req.body.mail
 		} ,function(err, bisContact){
 			if(err){
 				console.log(err);
 				res.end(err);
 			}
 			else{
-				res.redirect('/contactslist');
+		res.render('addcontact', {page: 'addcontact', title: 'Add Contact'}); 
 			}
 
 	}); 

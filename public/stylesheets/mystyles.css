@@ -41,6 +41,19 @@ html{
 	color: #3f6c3d;
 }
 
+.delbutton {
+	background-color: #d37b3c; 
+	color:#ffffff ;
+	width: 100%;
+}
+
+.editbutton {
+	background-color:#acd75b;
+	color:#ffffff;
+	width: 100%;
+
+}
+
 
 
 @media handheld, (max-width: 400px) {

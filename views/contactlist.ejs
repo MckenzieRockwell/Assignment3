@@ -1,0 +1,69 @@
+<div class='row'>
+	<div class='col-md-10 col-md-offset-1'>
+		<div class='panel panel-default'>
+		<ul class='list-group'>
+				<li class='list-group-item'>
+				<div class='row'>
+				<div class='col-md-9'>
+					<div class='row'>
+						<div class='col-md-3'>
+							<h4>
+							Contact name
+							</h4>
+						</div>
+						<div class='col-md-3'>
+							<h4>
+							Phone number
+							</h4>
+						</div>
+						<div class='col-md-3'>
+							<h4>
+							Email address
+							</h4>
+						</div>
+					</div>
+				</div>
+				</div>
+				</li>
+			<% if (contacts) { %>
+				<% for(var i=0; i< contacts.length; i++) { %>
+				<% var thiscontact = contacts[i] %>
+				<li class='list-group-item'>
+					<div class='row'>
+						<div class='col-md-9'>
+							<div class='row'>
+								<div class='col-md-3'>
+									<h4>
+				                		<%= thiscontact.name %>
+				                	</h4>
+				                </div>
+				                <div class='col-md-3'>
+				                	<h4>
+				                		<%= thiscontact.number %>
+				                	</h4>
+				                </div>
+				                <div class='col-md-6'>
+				                	<h4>
+				                	<%= thiscontact.emailaddress %>
+				                	</h4>
+				                </div>
+				            </div>
+			            </div> 
+		                <div class='col-md-3'>
+		                	<div class='row'>
+				                <div class='col-md-6'>
+				                	<a href='/contacts/delete/<%= thiscontact.name %>' class='btn btn-default delbutton'>Delete</a>
+				                </div>
+				                <div class='col-md-6'>
+				                	<a href='contacts/edit/<%= thiscontact.name %>' class='btn btn-default editbutton'>Edit</a>
+				                </div>
+			                </div>
+			            </div>
+		            </div>
+				</li>
+				<% } %>
+			<% } %>
+		</ul>
+		</div>
+	</div>
+</div>

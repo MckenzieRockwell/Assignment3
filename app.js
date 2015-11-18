@@ -8,6 +8,18 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 //var session = require('express-session'); 
 
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/test');
+
+var db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'DB Error: '));
+db.once('open', function(callback) {
+  console.log('Connected to mongodb');
+});
+
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var contacts = require('./routes/contacts');
