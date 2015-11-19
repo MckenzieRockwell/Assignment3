@@ -29,7 +29,7 @@ router.post('/login', passport.authenticate('local-login', {
 
 
 router.get('/contactlist',requireAuth, function(req, res, next){
-	bisContact.find(function(err, contacts){
+	bisContact.find().sort('name').exec(function(err, contacts){
 		if(err){
 			console.log(err);
 			res.end(err);
