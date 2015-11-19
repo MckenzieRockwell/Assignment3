@@ -77,7 +77,6 @@ router.post('/contactform',requireAuth, function(req, res, next){
 	var thisId = req.body.thisId;
 
 	if(typeof thisId !== 'undefined'){
-		console.log(thisId);
  		var thisBisContact = new bisContact({
  			name: req.body.name,
  			number: req.body.number,
