@@ -55,6 +55,22 @@ html{
 }
 
 
+#privatenav {
+	width: 40%;
+}
+
+.nav-pills li{
+	background-color: #dfd89f; 
+
+} 
+
+.nav-pills>li.active>a {
+	background-color: white;
+}
+
+
+
+
 
 @media handheld, (max-width: 400px) {
 

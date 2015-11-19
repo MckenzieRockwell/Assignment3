@@ -16,9 +16,13 @@ function requireAuth(req, res, next){
   next();
 }
 
-
 router.get('/login', function(req, res, next){
-	res.render('loginform', {page: 'login', title: 'User login'});
+	if(!req.isAuthenticated()){
+		res.render('loginform', {page: 'login', title: 'User login'});
+	}else{
+		res.render('loginform', {page: 'login', title: 'User login', authed: true});
+	}
+
 });
 
 
@@ -39,12 +43,14 @@ router.get('/contactlist',requireAuth, function(req, res, next){
 					res.render('contactlist',{
 					page: 'contactlist',
 					title: 'List of Business Contacts',
+					authed: true,
 					contacts: contacts
 					});
 				}else{
 					res.render('contactlist',{
 					page: 'contactlist',
-					title:'List of Business Contacts'
+					title:'List of Business Contacts',
+					authed: true
 					}); 
 				}
 		}
@@ -52,7 +58,7 @@ router.get('/contactlist',requireAuth, function(req, res, next){
 });
 
 router.get('/contactform',requireAuth, function(req, res, next){
-	res.render('contactform', {page: 'contactform', title: 'Add Contact'}); 
+	res.render('contactform', {page: 'contactform', title: 'Add Contact', authed: true}); 
 });
 
 router.get('/edit/:id',requireAuth, function(req, res, next){
@@ -66,6 +72,7 @@ router.get('/edit/:id',requireAuth, function(req, res, next){
 				page: 'contactform',
 				title: '',
 				editmode: true,
+				authed: true,
 				thiscontact: thiscontact
 			});
 		}
