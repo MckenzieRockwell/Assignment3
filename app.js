@@ -11,7 +11,7 @@ var session = require('express-session');
 var mongoose = require('mongoose');
 
 //mongoose.connect('mongodb://localhost/test');
-mongoose.connect('mongodb://mac:rockwell123@ds057214.mongolab.com:57214/projectdb');
+mongoose.connect('mongodb://mckenzie:rockwell123@ds057214.mongolab.com:57214/projectdb');
 
 var db = mongoose.connection;
 
