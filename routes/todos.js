@@ -1,6 +1,6 @@
 var express = require('express');
 var passport = require('passport');
-var router = express.router();
+var router = express.Router();
 
 var User = require('../models/user');
 
@@ -39,6 +39,8 @@ router.get('/todolist',  requireAuth, function(req, res, next){
 		}
 	}); 
 });
+
+module.exports = router; 
 
 
 
