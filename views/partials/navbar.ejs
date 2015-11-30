@@ -24,17 +24,21 @@
 
         <li id='privatenav'>
         <div class='row'>
-          <div class='col-sm-8 col-sm-offset-4'>
+          <div class='col-sm-10 col-sm-offset-2'>
             <% if(typeof authed === 'undefined'){ 
               var authed=false;
-
              } %>
+
             <ul class='nav nav-pills'>
               <li <% if (locals.page === 'login') { %>class='active<% } %>  contpills'><a href='/contacts/login'>Login</a></li>
 
               <li <% if (locals.page === 'contactlist') { %>class='active<% } %> contpills' <%if (!authed){ %>style="visibility: hidden"<% } %>><a href='/contacts/contactlist'>Contact List</a></li>
 
               <li <% if (locals.page === 'contactform') { %>class='active <% } %> contpills' <%if (!authed){ %>style="visibility: hidden"<% } %>><a href='/contacts/contactform'>Add Contact</a></li>
+
+
+              <li <% if (locals.page === 'todolist') { %>class='active<% } %> contpills' <% if (!authed){%>style="visibility: hidden"<% } %>><a href='/todolist'>To do List</a></li>
+  
             </ul>
           </div>
         </div>
