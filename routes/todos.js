@@ -40,6 +40,20 @@ router.get('/todolist',  requireAuth, function(req, res, next){
 	}); 
 });
 
+router.post('/add', requireAuth, function(req, res, next){
+	Todo.create({
+	name: req.body.name,
+	notes: req.body.note
+	}, function(err, Todo){
+		if(err){
+			console.log(err);
+			res.end(err);
+		}else{
+			res.redirect('/todos/todolist');
+		}
+	});
+});
+
 module.exports = router; 
 
 
