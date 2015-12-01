@@ -13,18 +13,29 @@
 
 		}); 
 
+		this.newitem = {};
+
+
 
 	}]);
 
 	app.controller('itemController', ['$http', function($http){
 
-		this.editItem = function(item){
-			item.editMode = true; 
-		};
-
 		this.inEdit = function(item){
 			return (item.editMode); 
 		}
+
+	}]);
+
+	app.controller('newitemController', ['$http', function($http){
+		
+		this.newitem = {};
+
+		this.addItem = function(allitems){
+			console.log(this.newitem); 
+			allitems.push(this.newitem);
+			this.newitem = {};  
+		};
 
 
 	}]);

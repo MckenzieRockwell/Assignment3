@@ -27,7 +27,7 @@
 							<input class='form-control' type='text' ng-model='item.notes' ng-disabled='!item.editMode'>
 						</div>
 						<div class='col-md-2'>
-							<input type='checkbox' ng-model='item.completed' ng-disabled='item.editMode'> 
+							<input type='checkbox' ng-model='item.completed'> 
 						</div>
 						<div class='col-md-1'>
 							<input type='checkbox' ng-model='item.editMode'>
@@ -38,15 +38,15 @@
 					</div>
 					</li>
 					<li class='list-group-item'>
-						<form class='form-horizontal' method='post' action='/todos/add'>
+						<form class='form-horizontal' ng-controller='newitemController as new' ng-submit="new.addItem(list.items)">
 							<div class='form-group'>
 								<label for='nameInput' class='col-md-1 control-label'>Name:</label>
 								<div class='col-md-3'>
-									<input id='nameInput' name='name' type='text' class='form-control'>
+									<input ng-model='new.newitem.name' name='name' type='text' class='form-control'>
 								</div>
 								<label for='noteInput' class='col-md-1 control-label'>Note:</label>
 								<div class='col-md-4'>
-									<input id='noteInput' class='form-control' name='note' type='text'>
+									<input id='noteInput' ng-model='new.newitem.notes' class='form-control' name='notes' type='text'>
 								</div>
 								<div class='col-md-1 col-md-offset-2'>
 									<button type='submit' class='btn btn-default'>add</button>
