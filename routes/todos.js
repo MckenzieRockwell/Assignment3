@@ -16,29 +16,27 @@ function requireAuth(req, res, next){
 
 
 
-router.get('/todolist',  requireAuth, function(req, res, next){
+router.get('/todolist', requireAuth, function(req, res, next){
+	res.render('todolist',{
+		page: 'todolist',
+		title: 'List of to do items',
+		authed: true
+	})
+}); 
+
+router.get('/todolist.json', requireAuth, function(req, res, next){
 	Todo.find().sort('createdAt').exec(function(err, todos){
 		if(err){
 			console.log(err);
 			res.end(err);
 		}else{
-				if(typeof todos !== 'undefined'){
-					res.render('todolist',{
-					page: 'todolist',
-					title: 'List of to do items',
-					authed: true,
-					todos: todos
-					});
-				}else{
-					res.render('todolist', {
-					page: 'todolist',
-					title: 'List of to do items',
-					authed: true
-					});
-				}
+			res.json(todos);
 		}
-	}); 
-});
+	});
+}); 
+
+
+
 
 router.post('/add', requireAuth, function(req, res, next){
 	Todo.create({
