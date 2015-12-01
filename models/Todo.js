@@ -24,9 +24,12 @@ var todoSchema = new Schema({
 	completedAt:{
 		type: Date,
 		default: ''
+	},
+
+	editMode: {
+		type: Boolean,
+		default: false
 	}
-
-
 });
 
 module.exports = mongoose.model('todo', todoSchema); 

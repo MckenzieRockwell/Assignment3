@@ -16,4 +16,17 @@
 
 	}]);
 
+	app.controller('itemController', ['$http', function($http){
+
+		this.editItem = function(item){
+			item.editMode = true; 
+		};
+
+		this.inEdit = function(item){
+			return (item.editMode); 
+		}
+
+
+	}]);
+
 })();

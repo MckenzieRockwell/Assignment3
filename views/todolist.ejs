@@ -13,17 +13,27 @@
 							<div class='col-md-2'>
 								<h4>Completed</h4>
 							</div>
+							<div class='col-md-2'>
+								<h4>Edit</h4>
+							</div>
 						</div>
 					</li>
 					<li class='list-group-item' ng-repeat='item in list.items'>
-					<div class='row'>
+					<div class='row' ng-controller='itemController as itemCtrl'>
 						<div class='col-md-3'>
-						<input class='form-control' type='text' ng-model='item.name' disabled>
+							<input class='form-control' type='text' ng-model='item.name' ng-disabled='!item.editMode'>
 						</div>
 						<div class='col-md-5'>
-						<input class='form-control' type='text' ng-model='item.notes' disabled>
+							<input class='form-control' type='text' ng-model='item.notes' ng-disabled='!item.editMode'>
 						</div>
 						<div class='col-md-2'>
+							<input type='checkbox' ng-model='item.completed' ng-disabled='item.editMode'> 
+						</div>
+						<div class='col-md-1'>
+							<input type='checkbox' ng-model='item.editMode'>
+						</div>
+						<div class='col-md-1'>
+							<button type='button' class='btn btn-default' ng-disabled='!item.editMode' ng-show='item.editMode'>Save</button>
 						</div>
 					</div>
 					</li>
