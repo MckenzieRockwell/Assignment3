@@ -54,11 +54,13 @@
 		
 		this.newitem = {};
 
-		this.addItem = function(allitems){
-			console.log(this.newitem);
-			todoList.items.push(this.newitem);
+		this.addItem = function(){
 
-			$http.post('/todos/add', this.newitem);
+			var newItem = this.newitem;
+			$http.post('/todos/add', this.newitem).success(function(){
+				todoList.items.push(newItem);
+			});
+
 			this.newitem = {};  
 		};
 

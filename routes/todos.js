@@ -80,7 +80,6 @@ router.post('/add', function(req, res, next){
 			res.end(err);
 		}else{
 			res.end();
-			console.log(Todo); 
 		}
 	});
 });
