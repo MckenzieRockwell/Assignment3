@@ -27,6 +27,16 @@
 			return (item.editMode); 
 		};
 
+		this.completedChanged = function(toggled){
+			if(toggled.completed){
+				toggled.editMode = false;
+			}
+
+			$http.post('/todos/edit', toggled).success(function(){
+				console.log('it worked'); 
+			}); 
+		}; 
+
 		this.editItem = function(edited){ 
 			console.log(edited);
 			$http.post('/todos/edit', edited).success(function(){

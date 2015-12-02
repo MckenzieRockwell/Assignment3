@@ -18,19 +18,19 @@
 							</div>
 						</div>
 					</li>
-					<li class='list-group-item' ng-repeat='item in list.items'>
-					<div class='row' ng-controller='itemController as itemCtrl'>
+					<li class='list-group-item' ng-repeat='item in list.items' ng-class="{greengb: item.completed}">
+					<div class='row' ng-controller='itemController as itemCtrl' ng-class="{greengb: item.completed}">
 						<div class='col-md-2'>
-							<input class='form-control' type='text' ng-model='item.name' ng-disabled='!item.editMode'>
+							<input class='form-control' type='text' ng-model='item.name' ng-disabled='!item.editMode' ng-class="{crossedout: item.completed}">
 						</div>
 						<div class='col-md-5'>
-							<input class='form-control' type='text' ng-model='item.notes' ng-disabled='!item.editMode'>
+							<input class='form-control' type='text' ng-model='item.notes' ng-disabled='!item.editMode' ng-class="{crossedout: item.completed}">
 						</div>
 						<div class='col-md-1'>
-							<input type='checkbox' ng-model='item.completed'> 
+							<input type='checkbox' ng-model='item.completed' ng-change='itemCtrl.completedChanged(item)'> 
 						</div>
 						<div class='col-md-1'>
-							<input type='checkbox' ng-model='item.editMode'>
+							<input type='checkbox' ng-disabled='item.completed' ng-model='item.editMode' ng-show='!item.editMode'>
 						</div>
 						<div class='col-md-1'>
 							<button type='button' class='btn btn-default' ng-disabled='!item.editMode' ng-show='item.editMode' ng-click='itemCtrl.editItem(item)'>Save</button>
@@ -39,7 +39,7 @@
 							<button type='button' class='btn btn-default' ng-disabled='!item.editMode' ng-show='item.editMode' ng-click='itemCtrl.cancelEdit(item)'>Cancel</button>
 						</div>
 						<div class='col-md-1'>
-							<button type='button' class='btn btn-default' ng-disabled='!item.editMode' ng-show='item.editMode' ng-click='itemCtrl.deleteItem(item)'>Delete</button>
+							<button type='button' class='btn btn-default' ng-click='itemCtrl.deleteItem(item)'>Delete</button>
 						</div>
 					</div>
 					</li>

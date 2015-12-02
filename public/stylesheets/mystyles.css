@@ -51,7 +51,6 @@ html{
 	background-color:#acd75b;
 	color:#ffffff;
 	width: 100%;
-
 }
 
 
@@ -66,6 +65,14 @@ html{
 
 .nav-pills>li.active>a {
 	background-color: white;
+}
+
+.crossedout {
+	text-decoration: line-through;
+}
+
+.greengb {
+	background-color:#d4eeba;
 }
 
 

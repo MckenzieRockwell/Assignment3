@@ -51,18 +51,26 @@ router.post('/getitem.json', function(req, res, next){
 router.post('/edit', function(req, res, next){
 	var edited = req.body; 
 	var thisid = req.body._id;
-	var newtodo = new Todo({
-		name: req.body.name,
-		notes: req.body.notes,
-		_id: thisid
-	}); 
+	var newnotes = req.body.notes;
+	var newname = req.body.name;
+	var newcompleted = req.body.completed;
 
-	Todo.update({_id: thisid}, newtodo, function(err){
+	Todo.findById(thisid, function(err, thisItem){
 		if(err){
 			console.log(err);
 			res.end(err);
 		}else{
-			res.end(); 
+			thisItem.notes = newnotes;
+			thisItem.name = newname;
+			thisItem.completed = newcompleted;
+			thisItem.save(function(err){
+				if(err){
+					console.log(err);
+					res.end(err);
+				}else{
+					res.end(); 
+				}
+			})
 		}
 	});
 

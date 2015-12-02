@@ -13,7 +13,7 @@ var todoSchema = new Schema({
 
 	notes: {
 		type: String,
-		defautl: ''
+		default: ''
 	},
 
 	completed: {
