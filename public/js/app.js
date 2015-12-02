@@ -8,22 +8,35 @@
 
 		todoList.items = [];
 
+
 		$http.get('/todos/todolist.json').success(function(data){
-			todoList.items = data;
-
+			todoList.items = data; 
 		}); 
-
-		this.newitem = {};
-
-
+		
 
 	}]);
 
 	app.controller('itemController', ['$http', function($http){
 
-		this.inEdit = function(item){
+		this.inEdit = function(){
 			return (item.editMode); 
-		}
+		};
+
+
+
+		this.editItem = function(edited){ 
+			console.log(edited);
+			$http.post('/todos/edit', edited); 
+			
+		};
+
+		// this.delete = function(){
+
+		// };
+
+		// this.cancel = function(){
+
+		// }
 
 	}]);
 
@@ -36,7 +49,6 @@
 			allitems.push(this.newitem);
 			this.newitem = {};  
 		};
-
 
 	}]);
 

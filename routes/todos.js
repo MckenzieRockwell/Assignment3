@@ -16,7 +16,7 @@ function requireAuth(req, res, next){
 
 
 
-router.get('/todolist', requireAuth, function(req, res, next){
+router.get('/todolist', function(req, res, next){
 	res.render('todolist',{
 		page: 'todolist',
 		title: 'List of to do items',
@@ -24,7 +24,7 @@ router.get('/todolist', requireAuth, function(req, res, next){
 	})
 }); 
 
-router.get('/todolist.json', requireAuth, function(req, res, next){
+router.get('/todolist.json', function(req, res, next){
 	Todo.find().sort('createdAt').exec(function(err, todos){
 		if(err){
 			console.log(err);
@@ -35,7 +35,27 @@ router.get('/todolist.json', requireAuth, function(req, res, next){
 	});
 }); 
 
+router.post('/edit', function(req, res, next){
+	var edited = req.body; 
+	var thisid = req.body._id;
+	var newtodo = new Todo({
+		name: req.body.name,
+		notes: req.body.notes,
+		_id: thisid
+	}); 
 
+	console.log(newtodo); 
+
+	Todo.update({_id: thisid}, newtodo, function(err){
+		if(err){
+			console.log(err);
+			res.end(err);
+		}else{
+			res.end(); 
+		}
+	});
+
+});
 
 
 router.post('/add', requireAuth, function(req, res, next){
