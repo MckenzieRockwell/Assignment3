@@ -2,16 +2,21 @@
 	
 	var app = angular.module('todoList',[]);
 
+	var todoList = {}; 
+
 	app.controller('listController',[ '$http', function($http){
 
-		var todoList = this;
+		todoList = this;
 
 		todoList.items = [];
-
 
 		$http.get('/todos/todolist.json').success(function(data){
 			todoList.items = data; 
 		}); 
+
+		this.getItems = function(){
+			return todoList.items; 
+		}
 		
 
 	}]);
@@ -22,21 +27,26 @@
 			return (item.editMode); 
 		};
 
-
-
 		this.editItem = function(edited){ 
 			console.log(edited);
-			$http.post('/todos/edit', edited); 
-			
+			$http.post('/todos/edit', edited).success(function(){
+				edited.editMode = false;
+			}); 
+
 		};
 
-		// this.delete = function(){
-
-		// };
+		this.deleteItem = function(edited){
+			console.log(edited); 
+			var index = todoList.items.indexOf(edited);
+			var thisid = edited._id; 
+			console.log(thisid); 
+			$http.post('/todos/delete', {id:thisid}).success(function(){
+				todoList.items.splice(index, 1);
+			}); 
+		}; 
 
 		// this.cancel = function(){
 
-		// }
 
 	}]);
 
@@ -45,8 +55,10 @@
 		this.newitem = {};
 
 		this.addItem = function(allitems){
-			console.log(this.newitem); 
-			allitems.push(this.newitem);
+			console.log(this.newitem);
+			todoList.items.push(this.newitem);
+
+			$http.post('/todos/add', this.newitem);
 			this.newitem = {};  
 		};
 
