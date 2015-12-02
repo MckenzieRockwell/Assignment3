@@ -35,6 +35,19 @@ router.get('/todolist.json', function(req, res, next){
 	});
 }); 
 
+router.post('/getitem.json', function(req, res, next){
+	var thisid = req.body.id;
+	console.log(thisid); 
+	Todo.findById(thisid, function(err, thisItem){
+		if(err){
+			console.log(err);
+			res.end(err); 
+		}else{
+			res.json(thisItem);
+		}
+	}); 
+}); 
+
 router.post('/edit', function(req, res, next){
 	var edited = req.body; 
 	var thisid = req.body._id;
@@ -73,7 +86,8 @@ router.post('/delete', function(req, res, next){
 router.post('/add', function(req, res, next){
 	Todo.create({
 	name: req.body.name,
-	notes: req.body.notes
+	notes: req.body.notes,
+	createdAt: Date()
 	}, function(err, Todo){
 		if(err){
 			console.log(err);

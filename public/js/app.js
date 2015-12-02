@@ -35,17 +35,23 @@
 
 		};
 
-		this.deleteItem = function(edited){
-			console.log(edited); 
-			var index = todoList.items.indexOf(edited);
-			var thisid = edited._id; 
-			console.log(thisid); 
+		this.deleteItem = function(deleted){ 
+			var index = todoList.items.indexOf(deleted);
+			var thisid = deleted._id;
 			$http.post('/todos/delete', {id:thisid}).success(function(){
 				todoList.items.splice(index, 1);
 			}); 
 		}; 
 
-		// this.cancel = function(){
+
+		this.cancelEdit = function(reverted){
+			var index = todoList.items.indexOf(reverted);
+			var thisid = reverted._id;
+			console.log(reverted);
+			$http.post('/todos/getitem.json', {id:thisid}).success(function(item) {
+				todoList.items.splice(index, 1, item); 
+			});
+		};
 
 
 	}]);

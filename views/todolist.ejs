@@ -36,7 +36,7 @@
 							<button type='button' class='btn btn-default' ng-disabled='!item.editMode' ng-show='item.editMode' ng-click='itemCtrl.editItem(item)'>Save</button>
 						</div>
 						<div class='col-md-1'> 
-							<button type='button' class='btn btn-default' ng-disabled='!item.editMode' ng-show='item.editMode'>Cancel</button>
+							<button type='button' class='btn btn-default' ng-disabled='!item.editMode' ng-show='item.editMode' ng-click='itemCtrl.cancelEdit(item)'>Cancel</button>
 						</div>
 						<div class='col-md-1'>
 							<button type='button' class='btn btn-default' ng-disabled='!item.editMode' ng-show='item.editMode' ng-click='itemCtrl.deleteItem(item)'>Delete</button>
