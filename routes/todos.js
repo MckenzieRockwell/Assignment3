@@ -1,3 +1,10 @@
+/*
+Author: Mckenzie Rockwell
+website: express portfolio
+Description: This file is used to handle all of the server requests
+pertaining to the todo list page. 
+*/
+
 var express = require('express');
 var passport = require('passport');
 var router = express.Router();
@@ -9,7 +16,7 @@ var Todo = require('../models/todo');
 
 function requireAuth(req, res, next){
 	if(!req.isAuthenticated()){
-	return res.redirect('/login'); 
+	return res.redirect('todos/login'); 
 	}
 	next();
 }
@@ -21,8 +28,13 @@ router.get('/todolist', function(req, res, next){
 		page: 'todolist',
 		title: 'List of to do items',
 		authed: true
-	})
+	});
 }); 
+
+/*
+This route responds with a json object of
+the todolist as a whole.
+*/
 
 router.get('/todolist.json', function(req, res, next){
 	Todo.find().sort('createdAt').exec(function(err, todos){
@@ -34,6 +46,12 @@ router.get('/todolist.json', function(req, res, next){
 		}
 	});
 }); 
+
+/*
+This route is used by the item controller when edit mode is exited
+using the cancel button. return is json representing the
+values which the form reverts back to.
+*/
 
 router.post('/getitem.json', function(req, res, next){
 	var thisid = req.body.id;
@@ -47,6 +65,11 @@ router.post('/getitem.json', function(req, res, next){
 		}
 	}); 
 }); 
+
+/*
+This route is used to update the values of an existing todo
+item.
+*/
 
 router.post('/edit', function(req, res, next){
 	var edited = req.body; 
@@ -63,6 +86,7 @@ router.post('/edit', function(req, res, next){
 			thisItem.notes = newnotes;
 			thisItem.name = newname;
 			thisItem.completed = newcompleted;
+
 			thisItem.save(function(err){
 				if(err){
 					console.log(err);
@@ -91,6 +115,9 @@ router.post('/delete', function(req, res, next){
 }); 
 
 
+/*
+This route is used to create a new todo list item
+*/
 router.post('/add', function(req, res, next){
 	Todo.create({
 	name: req.body.name,
@@ -101,7 +128,7 @@ router.post('/add', function(req, res, next){
 			console.log(err);
 			res.end(err);
 		}else{
-			res.end();
+			res.json(Todo);
 		}
 	});
 });

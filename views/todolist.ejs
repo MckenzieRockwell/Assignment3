@@ -40,7 +40,7 @@ Angular directives are dispersed throughout in order to link elements and contro
 							<input type='checkbox' ng-model='item.completed' ng-change='itemCtrl.completedChanged(item)'> 
 						</div>
 						<div class='col-md-1'>
-							<input type='checkbox' ng-disabled='item.completed' ng-model='item.editMode' ng-show='!item.editMode'>
+							<input type='checkbox' ng-disabled='item.completed' ng-model='item.editMode' ng-show='!item.editMode' ng-hide='item.completed'>
 						</div>
 						<div class='col-md-1'>
 							<button type='button' class='btn btn-default' ng-disabled='!item.editMode' ng-show='item.editMode' ng-click='itemCtrl.editItem(item)'>Save</button>

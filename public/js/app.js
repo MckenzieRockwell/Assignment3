@@ -57,6 +57,7 @@ the server has to do more work than it would have.
 			if(toggled.completed){
 				toggled.editMode = false;
 			}
+			console.log(toggled); 
 
 			$http.post('/todos/edit', toggled);
 		}; 
@@ -103,8 +104,8 @@ the server has to do more work than it would have.
 		this.addItem = function(){
 
 			var newItem = this.newitem;
-			$http.post('/todos/add', this.newitem).success(function(){
-				todoList.items.push(newItem);
+			$http.post('/todos/add', this.newitem).success(function(thisitem){
+				todoList.items.push(thisitem);
 			});
 
 			this.newitem = {};  
