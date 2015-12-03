@@ -23,7 +23,7 @@ function requireAuth(req, res, next){
 
 
 
-router.get('/todolist', function(req, res, next){
+router.get('/todolist', requireAuth, function(req, res, next){
 	res.render('todolist',{
 		page: 'todolist',
 		title: 'List of to do items',
@@ -53,7 +53,7 @@ using the cancel button. return is json representing the
 values which the form reverts back to.
 */
 
-router.post('/getitem.json', function(req, res, next){
+router.post('/getitem.json', requireAuth, function(req, res, next){
 	var thisid = req.body.id;
 	console.log(thisid); 
 	Todo.findById(thisid, function(err, thisItem){
@@ -71,7 +71,7 @@ This route is used to update the values of an existing todo
 item.
 */
 
-router.post('/edit', function(req, res, next){
+router.post('/edit', requireAuth, function(req, res, next){
 	var edited = req.body; 
 	var thisid = req.body._id;
 	var newnotes = req.body.notes;
@@ -100,7 +100,7 @@ router.post('/edit', function(req, res, next){
 
 });
 
-router.post('/delete', function(req, res, next){
+router.post('/delete', requireAuth, function(req, res, next){
 	var thisid = req.body.id;
 	console.log(thisid); 
 	Todo.remove({_id: thisid}, function(err){
@@ -118,7 +118,7 @@ router.post('/delete', function(req, res, next){
 /*
 This route is used to create a new todo list item
 */
-router.post('/add', function(req, res, next){
+router.post('/add', requireAuth, function(req, res, next){
 	Todo.create({
 	name: req.body.name,
 	notes: req.body.notes,
