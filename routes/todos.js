@@ -36,6 +36,7 @@ This route responds with a json object of
 the todolist as a whole.
 */
 
+router.get('/todolist.json', requireAuth, function(req, res, next){
 	Todo.find().sort('createdAt').exec(function(err, todos){
 		if(err){
 			console.log(err);
