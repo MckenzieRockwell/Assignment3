@@ -16,7 +16,7 @@ var Todo = require('../models/todo');
 
 function requireAuth(req, res, next){
 	if(!req.isAuthenticated()){
-	return res.redirect('todos/login'); 
+	return res.redirect('/contacts/login'); 
 	}
 	next();
 }
@@ -36,7 +36,6 @@ This route responds with a json object of
 the todolist as a whole.
 */
 
-router.get('/todolist.json', function(req, res, next){
 	Todo.find().sort('createdAt').exec(function(err, todos){
 		if(err){
 			console.log(err);
